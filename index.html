@@ -1,137 +1,142 @@
-  <!DOCTYPE html>                                                                                                                                                                          
-  <html lang="pt-BR">                                                                                                                                                                      
-  <head>                                                                                                                                                                                   
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">                                                                                                                   
-  <title>Bilhete Liberado</title>                                                                                                                                                          
-                                                                                                                                                                                           
-  <!-- META PIXEL -->                                                                                                                                                                    
-  <script>                                                                                                                                                                                 
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?                                                                                                                                        
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};                                                                                                                              
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0; 
-  t.src=v;s=b.getElementsByTagName(e)[0];                                                                                                                                                  
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');                                                                                                                                       
-                                                                                                                                                                                         
-  fbq('init', '1161301272315774');                                                                                                                                                         
-  fbq('track', 'PageView');                                                                                                                                                                
-  
-  async function trackClick() {                                                                                                                                                            
-    const eventId = 'CompleteRegistration' + Date.now();                                                                                                                                             
+  <!DOCTYPE html>
+  <html lang="pt-BR">                         
+  <head>                                                                                                                                                                       
+  <meta charset="UTF-8">                                                                                                                                                       
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">                                                                                                       
+  <title>Bilhete Liberado</title>         
+                                                                                                                                                                               
+  <!-- META PIXEL -->                                                                                                                                                          
+  <script>
+  !function(f,b,e,v,n,t,s)                                                                                                                                                     
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?                                                                                                                          
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};                                                                                                                    
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';                                                                                                                  
+  n.queue=[];t=b.createElement(e);t.async=!0;                                                                                                                                  
+  t.src=v;s=b.getElementsByTagName(e)[0];                                                                                                                                      
+  s.parentNode.insertBefore(t,s)}(window, document,'script',                                                                                                                   
+  'https://connect.facebook.net/en_US/fbevents.js');                                                                                                                           
+                                                                                                                                                                             
+  fbq('init', '1161301272315774');                                                                                                                                             
+  fbq('track', 'PageView');                                                                                                                                                    
+   
+  async function trackClick(e) {                                                                                                                                               
+    e.preventDefault();                                                                                                                                                      
+    const eventId = 'cr_' + Date.now();                                                                                                                                        
+                                                                                                                                                                             
     fbq('track', 'CompleteRegistration', {}, { eventID: eventId });
-                                                                                                                                                                                           
-    await fetch('https://jotap-cm-iv.vercel.app/api/lead', {
-      method: 'POST',                                                                                                                                                                      
-      headers: { 'Content-Type': 'application/json' },                                                                                                                                     
-      body: JSON.stringify({                                                                                                                                                               
-        fbp: document.cookie.match(/_fbp=([^;]+)/)?.[1] || null,                                                                                                                           
-        fbc: document.cookie.match(/_fbc=([^;]+)/)?.[1] || null,                                                                                                                           
-        userAgent: navigator.userAgent,                                                                                                                                                  
-        eventId: eventId                                                                                                                                                                   
-      })                                                                                                                                                                                   
-    });                                                                                                                                                                                    
-  }                                                                                                                                                                                        
-  </script>                                                                                                                                                                                
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1161301272315774&ev=PageView&noscript=1"                                                                                                             
-  /></noscript>                                                                                                                                                                          
-                                          
-  <style>
-  body {                                                                                                                                                                                   
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;                                                                                                                                           
-      background: radial-gradient(circle at center, #0f2a1f 0%, #000000 70%);                                                                                                            
-      color: white;
-      text-align: center;                                                                                                                                                                  
-  }                                           
-                                                                                                                                                                                           
-  .container {                                                                                                                                                                           
-      padding: 20px 20px;                                                                                                                                                                  
-  }
-                                                                                                                                                                                           
-  h1 {                                                                                                                                                                                   
-      font-size: 38px;
-      color: #ff0000;
-      margin-bottom: 20px;
-      font-weight: bold;
-  }
-                                              
-  .subtext {                              
-      font-size: 20px;
-      color: #d9d9d9;                                                                                                                                                                      
-      margin-bottom: 40px;
-  }                                                                                                                                                                                        
-                                                                                                                                                                                         
-  .button {
-      display: inline-block;
-      background-color: #ff0000;
+                                                                                                                                                                               
+    try {                                                                                                                                                                      
+      await fetch('https://jotap-comunidade-iv.vercel.app/api/lead', {                                                                                                         
+        method: 'POST',                                                                                                                                                        
+        headers: { 'Content-Type': 'application/json' },                                                                                                                       
+        body: JSON.stringify({                                                                                                                                               
+          fbp: document.cookie.match(/_fbp=([^;]+)/)?.[1] || null,                                                                                                             
+          fbc: document.cookie.match(/_fbc=([^;]+)/)?.[1] || null,
+          userAgent: navigator.userAgent,                                                                                                                                      
+          eventId: eventId                                                                                                                                                   
+        })                                                                                                                                                                     
+      });
+    } catch(err) {}                                                                                                                                                            
+                                                                                                                                                                             
+    window.location.href = 'https://ticmd.redirecionar.online/';
+  }                                       
+  </script>                                                                                                                                                                    
+  <noscript><img height="1" width="1" style="display:none"                                                                                                                     
+  src="https://www.facebook.com/tr?id=1161301272315774&ev=PageView&noscript=1"                                                                                                 
+  /></noscript>                                                                                                                                                                
+                                                                                                                                                                             
+  <style>                                                                                                                                                                      
+  body {                                                                                                                                                                       
+      margin: 0;                                                                                                                                                               
+      font-family: Arial, Helvetica, sans-serif;                                                                                                                               
+      background: radial-gradient(circle at center, #0f2a1f 0%, #000000 70%);                                                                                                
       color: white;                           
-      padding: 18px 40px;                 
-      font-size: 22px;
-      font-weight: bold;                                                                                                                                                                   
-      border-radius: 12px;
-      text-decoration: none;                                                                                                                                                               
-      transition: 0.3s ease;                                                                                                                                                             
-      animation: pulse 1.5s infinite;         
+      text-align: center;                 
+  }                                                                                                                                                                            
+                                                                                                                                                                               
+  .container {                                                                                                                                                                 
+      padding: 20px 20px;                                                                                                                                                      
+  }                                                                                                                                                                          
+                                          
+  h1 {
+      font-size: 38px;                                                                                                                                                         
+      color: #ff0000;
+      margin-bottom: 20px;                                                                                                                                                     
+      font-weight: bold;                                                                                                                                                     
   }                                       
 
-  .button:hover {                                                                                                                                                                          
+  .subtext {                                                                                                                                                                   
+      font-size: 20px;
+      color: #d9d9d9;                                                                                                                                                          
+      margin-bottom: 40px;                                                                                                                                                   
+  }                                       
+
+  .button {                                                                                                                                                                    
+      display: inline-block;
+      background-color: #ff0000;                                                                                                                                               
+      color: white;                                                                                                                                                          
+      padding: 18px 40px;                 
+      font-size: 22px;
+      font-weight: bold;                                                                                                                                                       
+      border-radius: 12px;
+      text-decoration: none;                                                                                                                                                   
+      transition: 0.3s ease;                                                                                                                                                 
+      animation: pulse 1.5s infinite;
+      cursor: pointer;                                                                                                                                                         
+  }                                       
+                                                                                                                                                                               
+  .button:hover {                                                                                                                                                              
       background-color: #cc0000;
-  }                                                                                                                                                                                        
-                                                                                                                                                                                         
+  }                                                                                                                                                                            
+                                                                                                                                                                             
   @keyframes pulse {
       0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,0,0,0.7); }
       70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255,0,0,0); }
-      100% { transform: scale(1); }       
-  }                                           
-                                                                                                                                                                                           
-  .alert-box {
-      margin-top: 60px;                                                                                                                                                                    
-      padding: 30px;                                                                                                                                                                     
-  }                                                                                                                                                                                        
-                                                                                                                                                                                         
-  .alert-box h2 {
-      color: #00ff66;
+      100% { transform: scale(1); }           
+  }                                       
+                                                                                                                                                                               
+  .alert-box {                                                                                                                                                                 
+      margin-top: 60px;                                                                                                                                                        
+      padding: 30px;                                                                                                                                                           
+  }                                                                                                                                                                          
+
+  .alert-box h2 {                             
+      color: #00ff66;                     
       margin-bottom: 35px;
+  }                                                                                                                                                                            
+   
+  .alert-box p {                                                                                                                                                               
+      color: #cccccc;                                                                                                                                                        
   }
 
-  .alert-box p {                              
-      color: #cccccc;                     
-  }
-                                                                                                                                                                                           
   .footer {
-      margin-top: 60px;                                                                                                                                                                    
-      font-size: 14px;                                                                                                                                                                   
-      color: #777;
+      margin-top: 60px;
+      font-size: 14px;                        
+      color: #777;                        
   }
-  </style>
+  </style>                                                                                                                                                                     
+   
+  </head>                                                                                                                                                                      
+  <body>                                                                                                                                                                     
 
-  </head>
-  <body>
-                                              
   <img src="foto-perfil-3.png" alt="Foto do Tipster" style="width: 350px; height: auto; object-fit: contain; margin-bottom: 20px;">
-
-      <h1>COMUNIDADE<br>LIBERADA</h1>                                                                                                                                                      
                                           
-      <div class="subtext">                                                                                                                                                                
-          Clique no botão abaixo para fazer parte da minha comunidade VIP!                                                                                                                 
-      </div>
-                                                                                                                                                                                           
-      <a href="https://ticmd.redirecionar.online/" class="button" onclick="trackClick()">ENTRAR AGORA</a>                                                                                 
+      <h1>COMUNIDADE<br>LIBERADA</h1>         
+                                                                                                                                                                               
+      <div class="subtext">
+          Clique no botão abaixo para fazer parte da minha comunidade VIP!                                                                                                     
+      </div>                                                                                                                                                                 
+                                                                                                                                                                               
+      <a href="https://ticmd.redirecionar.online/" class="button" onclick="trackClick(event)">ENTRAR AGORA</a>                                                               
                                           
       <div class="alert-box">
-          <h2>⚠ Entre e aguarde</h2>                                                                                                                                                       
+          <h2>⚠ Entre e aguarde</h2>                                                                                                                                           
           <p>As entradas serão enviadas em instantes!</p>
-      </div>                                                                                                                                                                               
-                                                                                                                                                                                         
-      <div class="footer">                
-          Copyright © 2026 – Todos os direitos reservados
-      </div>                                                                                                                                                                               
-  
-  </div>                                                                                                                                                                                   
-                                                                                                                                                                                         
-  </body>
+      </div>                                                                                                                                                                   
+                                                                                                                                                                             
+      <div class="footer">
+          Copyright © 2026 – Todos os direitos reservados                                                                                                                      
+      </div>
+                                                                                                                                                                               
+  </body>                                                                                                                                                                    
   </html>
