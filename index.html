@@ -1,249 +1,137 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.4">
-  <style type="text/css">
-    body {background-color: #000000}
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #d4d4d4; -webkit-text-stroke: #d4d4d4; background-color: #121313}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #d4d4d4; -webkit-text-stroke: #d4d4d4; background-color: #121313; min-height: 18.0px}
-    span.s1 {font-kerning: none}
+  <!DOCTYPE html>                                                                                                                                                                          
+  <html lang="pt-BR">                                                                                                                                                                      
+  <head>                                                                                                                                                                                   
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">                                                                                                                   
+  <title>Bilhete Liberado</title>                                                                                                                                                          
+                                                                                                                                                                                           
+  <!-- META PIXEL -->                                                                                                                                                                    
+  <script>                                                                                                                                                                                 
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?                                                                                                                                        
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};                                                                                                                              
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0; 
+  t.src=v;s=b.getElementsByTagName(e)[0];                                                                                                                                                  
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');                                                                                                                                       
+                                                                                                                                                                                         
+  fbq('init', '1161301272315774');                                                                                                                                                         
+  fbq('track', 'PageView');                                                                                                                                                                
+  
+  async function trackClick() {                                                                                                                                                            
+    const eventId = 'CompleteRegistration' + Date.now();                                                                                                                                             
+    fbq('track', 'CompleteRegistration', {}, { eventID: eventId });
+                                                                                                                                                                                           
+    await fetch('https://jotap-cm-iv.vercel.app/api/lead', {
+      method: 'POST',                                                                                                                                                                      
+      headers: { 'Content-Type': 'application/json' },                                                                                                                                     
+      body: JSON.stringify({                                                                                                                                                               
+        fbp: document.cookie.match(/_fbp=([^;]+)/)?.[1] || null,                                                                                                                           
+        fbc: document.cookie.match(/_fbc=([^;]+)/)?.[1] || null,                                                                                                                           
+        userAgent: navigator.userAgent,                                                                                                                                                  
+        eventId: eventId                                                                                                                                                                   
+      })                                                                                                                                                                                   
+    });                                                                                                                                                                                    
+  }                                                                                                                                                                                        
+  </script>                                                                                                                                                                                
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1161301272315774&ev=PageView&noscript=1"                                                                                                             
+  /></noscript>                                                                                                                                                                          
+                                          
+  <style>
+  body {                                                                                                                                                                                   
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;                                                                                                                                           
+      background: radial-gradient(circle at center, #0f2a1f 0%, #000000 70%);                                                                                                            
+      color: white;
+      text-align: center;                                                                                                                                                                  
+  }                                           
+                                                                                                                                                                                           
+  .container {                                                                                                                                                                           
+      padding: 20px 20px;                                                                                                                                                                  
+  }
+                                                                                                                                                                                           
+  h1 {                                                                                                                                                                                   
+      font-size: 38px;
+      color: #ff0000;
+      margin-bottom: 20px;
+      font-weight: bold;
+  }
+                                              
+  .subtext {                              
+      font-size: 20px;
+      color: #d9d9d9;                                                                                                                                                                      
+      margin-bottom: 40px;
+  }                                                                                                                                                                                        
+                                                                                                                                                                                         
+  .button {
+      display: inline-block;
+      background-color: #ff0000;
+      color: white;                           
+      padding: 18px 40px;                 
+      font-size: 22px;
+      font-weight: bold;                                                                                                                                                                   
+      border-radius: 12px;
+      text-decoration: none;                                                                                                                                                               
+      transition: 0.3s ease;                                                                                                                                                             
+      animation: pulse 1.5s infinite;         
+  }                                       
+
+  .button:hover {                                                                                                                                                                          
+      background-color: #cc0000;
+  }                                                                                                                                                                                        
+                                                                                                                                                                                         
+  @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,0,0,0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255,0,0,0); }
+      100% { transform: scale(1); }       
+  }                                           
+                                                                                                                                                                                           
+  .alert-box {
+      margin-top: 60px;                                                                                                                                                                    
+      padding: 30px;                                                                                                                                                                     
+  }                                                                                                                                                                                        
+                                                                                                                                                                                         
+  .alert-box h2 {
+      color: #00ff66;
+      margin-bottom: 35px;
+  }
+
+  .alert-box p {                              
+      color: #cccccc;                     
+  }
+                                                                                                                                                                                           
+  .footer {
+      margin-top: 60px;                                                                                                                                                                    
+      font-size: 14px;                                                                                                                                                                   
+      color: #777;
+  }
   </style>
-</head>
-<body>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space"> </span>&lt;!DOCTYPE html&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">  </span>&lt;html lang="pt-br"&gt; <span class="Apple-converted-space">                                                                                                                                                                     </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">  </span>&lt;head&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>&lt;meta charset="UTF-8"&gt;<span class="Apple-converted-space">                                                                                                                                                               </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt; <span class="Apple-converted-space">                                                                       </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>&lt;title&gt;Comunidade do Jota - Jogos do Dia&lt;/title&gt;<span class="Apple-converted-space">                                                                                                                                     </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">   </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>&lt;script&gt;<span class="Apple-converted-space">                                                                                                                                                                             </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>!function(f,b,e,v,n,t,s)<span class="Apple-converted-space">                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>{if(f.fbq)return;n=f.fbq=function(){n.callMethod? <span class="Apple-converted-space">                                                                                                                                   </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>n.callMethod.apply(n,arguments):n.queue.push(arguments)}; <span class="Apple-converted-space">                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>n.queue=[];t=b.createElement(e);t.async=!0; <span class="Apple-converted-space">                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>t.src=v;s=b.getElementsByTagName(e)[0]; <span class="Apple-converted-space">                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>s.parentNode.insertBefore(t,s)}(window, document,'script',<span class="Apple-converted-space">                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>'https://connect.facebook.net/en_US/fbevents.js');<span class="Apple-converted-space">                                                                                                                                   </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>fbq('init', '1370157767963562');</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>fbq('track', 'PageView'); <span class="Apple-converted-space">                                                                                                                                                           </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>async function dispararLead() { <span class="Apple-converted-space">                                                                                                                                                     </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">        </span>const eventId = 'Search' + Date.now();<span class="Apple-converted-space">                                                                                                                             </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">        </span>fbq('track', 'Search', {}, { eventID: eventId }); <span class="Apple-converted-space">                                                                                                                   </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">        </span>await fetch('https://jotap-api-am.vercel.app/api/lead', { <span class="Apple-converted-space">                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>method: 'POST', <span class="Apple-converted-space">                                                                                                                                                                 </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>headers: { 'Content-Type': 'application/json' },<span class="Apple-converted-space">                                                                                                                                 </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>body: JSON.stringify({<span class="Apple-converted-space">                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">            </span>fbp: document.cookie.match(/_fbp=([^;]+)/)?.[1] || null,</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">            </span>fbc: document.cookie.match(/_fbc=([^;]+)/)?.[1] || null,<span class="Apple-converted-space">                                                                                                                       </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">            </span>userAgent: navigator.userAgent, <span class="Apple-converted-space">                                                                                                                                             </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">            </span>eventId: eventId<span class="Apple-converted-space">                                                                                                                                                               </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>})<span class="Apple-converted-space">                                                                                                                                                                             </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">        </span>}); <span class="Apple-converted-space">                                                                                                                                                                               </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>} <span class="Apple-converted-space">                                                                                                                                                                                 </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>&lt;/script&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>&lt;noscript&gt;&lt;img height="1" width="1" style="display:none"</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>src="https://www.facebook.com/tr?id=1346675563469865&amp;ev=PageView&amp;noscript=1"<span class="Apple-converted-space">                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>/&gt;&lt;/noscript&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>&lt;style&gt; <span class="Apple-converted-space">                                                                                                                                                                             </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,900;1,900&amp;display=swap'); <span class="Apple-converted-space">                                                                             </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>:root { <span class="Apple-converted-space">                                                                                                                                                                       </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>--primary: #00ff88; <span class="Apple-converted-space">                                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>--bg: #020202;<span class="Apple-converted-space">                                                                                                                                                             </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>} <span class="Apple-converted-space">                                                                                                                                                                               </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">   </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>* { margin: 0; padding: 0; box-sizing: border-box; }<span class="Apple-converted-space">                                                                                                                             </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>body {<span class="Apple-converted-space">                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>background-color: var(--bg);</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>color: #fff;<span class="Apple-converted-space">                                                                                                                                                                 </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>overflow-x: hidden; <span class="Apple-converted-space">                                                                                                                                                       </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>min-height: 100vh;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>font-family: 'Arial', sans-serif; <span class="Apple-converted-space">                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>}</i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.lp-wrapper { <span class="Apple-converted-space">                                                                                                                                                                 </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>position: relative;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>z-index: 10;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>width: 100%;<span class="Apple-converted-space">                                                                                                                                                                 </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>min-height: 100vh;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>display: flex;<span class="Apple-converted-space">                                                                                                                                                               </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>flex-direction: column; <span class="Apple-converted-space">                                                                                                                                                   </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>justify-content: space-between;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>padding: 30px 0;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>background: <span class="Apple-converted-space">                                                                                                                                                                 </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                  </span>linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)),</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                  </span>url('DSC07957.jpg-convertido-de-jpeg.webp') center/cover no-repeat fixed;<span class="Apple-converted-space">                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>} <span class="Apple-converted-space">                                                                                                                                                                               </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.header-section { width: 100%; text-align: center; }<span class="Apple-converted-space">                                                                                                                             </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.section-label {</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>font-size: 11px;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>text-transform: uppercase;<span class="Apple-converted-space">                                                                                                                                                   </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>color: var(--primary);</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>letter-spacing: 3px;<span class="Apple-converted-space">                                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>margin-bottom: 10px;<span class="Apple-converted-space">                                                                                                                                                       </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>font-weight: bold;<span class="Apple-converted-space">                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>}</i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.carousel-container { display: flex; width: 100%; overflow: hidden; padding: 10px 0; }<span class="Apple-converted-space">                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.carousel-track {</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>display: flex;<span class="Apple-converted-space">                                                                                                                                                               </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>gap: 15px;<span class="Apple-converted-space">                                                                                                                                                                 </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>animation: scroll 35s linear infinite;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>padding-left: 15px; <span class="Apple-converted-space">                                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>width: max-content;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>} <span class="Apple-converted-space">                                                                                                                                                                               </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>@keyframes scroll { <span class="Apple-converted-space">                                                                                                                                                             </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>0% { transform: translateX(0); }</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>100% { transform: translateX(-50%); } <span class="Apple-converted-space">                                                                                                                                       </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>} <span class="Apple-converted-space">                                                                                                                                                                             </span></i></span></p>
-<p class="p2"><span class="s1"><i></i></span><br></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.game-card {</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>background: rgba(255, 255, 255, 0.05);</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>backdrop-filter: blur(10px);<span class="Apple-converted-space">                                                                                                                                                 </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>-webkit-backdrop-filter: blur(10px);</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>min-width: 220px; <span class="Apple-converted-space">                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>padding: 15px;<span class="Apple-converted-space">                                                                                                                                                               </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>border-radius: 20px;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>border: 1px solid rgba(255, 255, 255, 0.1); <span class="Apple-converted-space">                                                                                                                                 </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>} <span class="Apple-converted-space">                                                                                                                                                                             </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.teams-row { display: flex; align-items: center; justify-content: center; gap: 15px; }</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.team { display: flex; flex-direction: column; align-items: center; min-width: 70px; }<span class="Apple-converted-space">                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.team img { width: 35px; height: 35px; object-fit: contain; margin-bottom: 5px; } <span class="Apple-converted-space">                                                                                               </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.team span { font-size: 11px; font-weight: bold; white-space: nowrap; } <span class="Apple-converted-space">                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.vs { font-weight: 900; color: var(--primary); font-size: 14px; } <span class="Apple-converted-space">                                                                                                               </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.headline { <span class="Apple-converted-space">                                                                                                                                                                   </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>font-family: 'Kanit', sans-serif; <span class="Apple-converted-space">                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>font-size: clamp(45px, 12vw, 60px); <span class="Apple-converted-space">                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>font-weight: 900;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>font-style: italic; <span class="Apple-converted-space">                                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>text-transform: uppercase;<span class="Apple-converted-space">                                                                                                                                                 </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>margin-top: 170px;<span class="Apple-converted-space">                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>line-height: 0.85;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>text-align: center; <span class="Apple-converted-space">                                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>text-shadow: 0 4px 20px rgba(0,0,0,1);<span class="Apple-converted-space">                                                                                                                                       </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>}</i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>/* ✅ SUBIU O BOTÃO */<span class="Apple-converted-space">                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.footer-section { width: 100%; display: flex; flex-direction: column; align-items: center; padding: 0 20px; margin-top: auto; margin-bottom: 60px; }</i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.alert-box {<span class="Apple-converted-space">                                                                                                                                                                   </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>width: 100%;<span class="Apple-converted-space">                                                                                                                                                                 </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>max-width: 360px; <span class="Apple-converted-space">                                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>background: rgba(255, 255, 255, 0.08);</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>border: 1px solid rgba(255, 255, 255, 0.1);</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>border-radius: 12px;<span class="Apple-converted-space">                                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>padding: 12px;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>margin-bottom: 15px;<span class="Apple-converted-space">                                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>backdrop-filter: blur(10px);<span class="Apple-converted-space">                                                                                                                                               </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>}</i></span></p>
-<p class="p2"><span class="s1"><i></i></span><br></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.alert-box p { font-size: 12px; color: #fff; line-height: 1.4; text-align: center; }<span class="Apple-converted-space">                                                                                             </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.alert-box span { color: #ff8800; font-weight: bold; }</i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.btn-container { width: 100%; max-width: 360px; } <span class="Apple-converted-space">                                                                                                                               </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">   </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.btn-border-beam {<span class="Apple-converted-space">                                                                                                                                                               </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>position: relative; padding: 2px; border-radius: 18px; overflow: hidden; display: block; text-decoration: none; <span class="Apple-converted-space">                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>} <span class="Apple-converted-space">                                                                                                                                                                               </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">   </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.btn-border-beam::before {<span class="Apple-converted-space">                                                                                                                                                       </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;<span class="Apple-converted-space">                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>background: conic-gradient(transparent, transparent, var(--primary), transparent);</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>animation: rotate 3s linear infinite; <span class="Apple-converted-space">                                                                                                                                       </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>}</i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } } <span class="Apple-converted-space">                                                                                     </span></i></span></p>
-<p class="p2"><span class="s1"><i></i></span><br></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>/* ✅ BOTÃO VERDE */<span class="Apple-converted-space">                                                                                                                                                             </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>.btn-content {</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>position: relative; background: #00ff88; color: #000; padding: 20px; border-radius: 16px; <span class="Apple-converted-space">                                                                                   </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>font-size: 18px; font-weight: 900; text-transform: uppercase; display: block; z-index: 5; text-align: center; <span class="Apple-converted-space">                                                               </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>}</i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>&lt;/style&gt;<span class="Apple-converted-space">                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">  </span>&lt;/head&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">  </span>&lt;body&gt;<span class="Apple-converted-space">                                                                                                                                                                                   </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">   </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>&lt;div class="lp-wrapper"&gt;<span class="Apple-converted-space">                                                                                                                                                             </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>&lt;div class="header-section"&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>&lt;p class="section-label"&gt;Jogos do Dia&lt;/p&gt;</i></span></p>
-<p class="p2"><span class="s1"><i></i></span><br></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>&lt;div class="carousel-container"&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                  </span>&lt;div class="carousel-track"&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                      </span>&lt;div class="game-card"&gt; <span class="Apple-converted-space">                                                                                                                                             </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                          </span>&lt;div class="teams-row"&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                              </span>&lt;div class="team"&gt;&lt;img src="barcelona.5b3712bd.svg"&gt;&lt;span&gt;Barcelona&lt;/span&gt;&lt;/div&gt;<span class="Apple-converted-space">                                                                             </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                              </span>&lt;div class="vs"&gt;VS&lt;/div&gt;<span class="Apple-converted-space">                                                                                                                                   </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                              </span>&lt;div class="team"&gt;&lt;img src="celta.4b0928f2.svg"&gt;&lt;span&gt;Celta de Vigo&lt;/span&gt;&lt;/div&gt;<span class="Apple-converted-space">                                                                             </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                          </span>&lt;/div&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                      </span>&lt;/div&gt;<span class="Apple-converted-space">                                                                                                                                                               </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                      </span>&lt;div class="game-card"&gt; <span class="Apple-converted-space">                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                          </span>&lt;div class="teams-row"&gt; <span class="Apple-converted-space">                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                              </span>&lt;div class="team"&gt;&lt;img src="bayern-munchen.3249740f.svg"&gt;&lt;span&gt;Bayern&lt;/span&gt;&lt;/div&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                              </span>&lt;div class="vs"&gt;VS&lt;/div&gt;<span class="Apple-converted-space">                                                                                                                                     </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                              </span>&lt;div class="team"&gt;&lt;img src="bayer-leverkusen.292c0812.svg"&gt;&lt;span&gt;Leverkusen&lt;/span&gt;&lt;/div&gt;<span class="Apple-converted-space">                                                                     </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                          </span>&lt;/div&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                      </span>&lt;/div&gt;<span class="Apple-converted-space">                                                                                                                                                               </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                      </span>&lt;div class="game-card"&gt; <span class="Apple-converted-space">                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                          </span>&lt;div class="teams-row"&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                              </span>&lt;div class="team"&gt;&lt;img src="flamengo.73505f83.svg"&gt;&lt;span&gt;Flamengo&lt;/span&gt;&lt;/div&gt;<span class="Apple-converted-space">                                                                               </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                              </span>&lt;div class="vs"&gt;VS&lt;/div&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                              </span>&lt;div class="team"&gt;&lt;img src="vitoria.4d528a58.svg"&gt;&lt;span&gt;Vitória&lt;/span&gt;&lt;/div&gt;<span class="Apple-converted-space">                                                                                 </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                          </span>&lt;/div&gt;<span class="Apple-converted-space">                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                      </span>&lt;/div&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                      </span>&lt;div class="game-card"&gt; <span class="Apple-converted-space">                                                                                                                                             </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                          </span>&lt;div class="teams-row"&gt; <span class="Apple-converted-space">                                                                                                                                       </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                              </span>&lt;div class="team"&gt;&lt;img src="bahia.4916b15f.svg"&gt;&lt;span&gt;Bahia&lt;/span&gt;&lt;/div&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                              </span>&lt;div class="vs"&gt;VS&lt;/div&gt;<span class="Apple-converted-space">                                                                                                                                     </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                              </span>&lt;div class="team"&gt;&lt;img src="clube-do-remo.91e6fb3f.svg"&gt;&lt;span&gt;Remo&lt;/span&gt;&lt;/div&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                          </span>&lt;/div&gt;<span class="Apple-converted-space">                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                      </span>&lt;/div&gt;<span class="Apple-converted-space">                                                                                                                                                             </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                      </span>&lt;div class="game-card"&gt;&lt;div class="teams-row"&gt;&lt;div class="team"&gt;&lt;img src="barcelona.5b3712bd.svg"&gt;&lt;span&gt;Barcelona&lt;/span&gt;&lt;/div&gt;&lt;div class="vs"&gt;VS&lt;/div&gt;&lt;div<span class="Apple-converted-space">           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">  </span>class="team"&gt;&lt;img src="celta.4b0928f2.svg"&gt;&lt;span&gt;Celta de Vigo&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                      </span>&lt;div class="game-card"&gt;&lt;div class="teams-row"&gt;&lt;div class="team"&gt;&lt;img src="bayern-munchen.3249740f.svg"&gt;&lt;span&gt;Bayern&lt;/span&gt;&lt;/div&gt;&lt;div class="vs"&gt;VS&lt;/div&gt;&lt;div<span class="Apple-converted-space">         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">  </span>class="team"&gt;&lt;img src="bayer-leverkusen.292c0812.svg"&gt;&lt;span&gt;Leverkusen&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt; <span class="Apple-converted-space">                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                      </span>&lt;div class="game-card"&gt;&lt;div class="teams-row"&gt;&lt;div class="team"&gt;&lt;img src="flamengo.73505f83.svg"&gt;&lt;span&gt;Flamengo&lt;/span&gt;&lt;/div&gt;&lt;div class="vs"&gt;VS&lt;/div&gt;&lt;div<span class="Apple-converted-space"> </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">  </span>class="team"&gt;&lt;img src="vitoria.4d528a58.svg"&gt;&lt;span&gt;Vitória&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt; <span class="Apple-converted-space">                                                                                                     </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                      </span>&lt;div class="game-card"&gt;&lt;div class="teams-row"&gt;&lt;div class="team"&gt;&lt;img src="bahia.4916b15f.svg"&gt;&lt;span&gt;Bahia&lt;/span&gt;&lt;/div&gt;&lt;div class="vs"&gt;VS&lt;/div&gt;&lt;div class="team"&gt;&lt;img<span class="Apple-converted-space"> </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">  </span>src="clube-do-remo.91e6fb3f.svg"&gt;&lt;span&gt;Remo&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;<span class="Apple-converted-space">                                                                                                                     </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                  </span>&lt;/div&gt;<span class="Apple-converted-space">                                                                                                                                                                 </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>&lt;/div&gt;<span class="Apple-converted-space">                                                                                                                                                                       </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>&lt;h1 class="headline"&gt;ODD 30&lt;br&gt;&lt;span style="color: var(--primary)"&gt;LIBERADA&lt;/span&gt;&lt;/h1&gt;<span class="Apple-converted-space">                                                                                     </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>&lt;/div&gt;</i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>&lt;div class="footer-section"&gt;<span class="Apple-converted-space">                                                                                                                                                   </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>&lt;div class="alert-box"&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                  </span>&lt;p&gt;&lt;span&gt;*&lt;/span&gt; Fale comigo agora, e em breve vou mandar uma oportunidade para nos forrarmos juntos!&lt;/p&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>&lt;/div&gt;<span class="Apple-converted-space">                                                                                                                                                                       </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">   </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>&lt;div class="btn-container"&gt; <span class="Apple-converted-space">                                                                                                                                                 </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                  </span>&lt;a href="https://rd.redirecionar.online/" class="btn-border-beam" onclick="dispararLead()"&gt; <span class="Apple-converted-space">                                                                           </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                      </span>&lt;span class="btn-content"&gt;🔥 PEGAR BILHETE&lt;/span&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">                  </span>&lt;/a&gt;<span class="Apple-converted-space">                                                                                                                                                                     </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">              </span>&lt;/div&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">          </span>&lt;/div&gt;<span class="Apple-converted-space">                                                                                                                                                                           </span></i></span></p>
-<p class="p2"><span class="s1"><i><span class="Apple-converted-space">                                                                                                                                                                                         </span></i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">      </span>&lt;/div&gt;</i></span></p>
-<p class="p2"><span class="s1"><i></i></span><br></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">  </span>&lt;/body&gt;</i></span></p>
-<p class="p1"><span class="s1"><i><span class="Apple-converted-space">  </span>&lt;/html&gt;</i></span></p>
-</body>
-</html>
+
+  </head>
+  <body>
+                                              
+  <img src="foto-perfil-3.png" alt="Foto do Tipster" style="width: 350px; height: auto; object-fit: contain; margin-bottom: 20px;">
+
+      <h1>COMUNIDADE<br>LIBERADA</h1>                                                                                                                                                      
+                                          
+      <div class="subtext">                                                                                                                                                                
+          Clique no botão abaixo para fazer parte da minha comunidade VIP!                                                                                                                 
+      </div>
+                                                                                                                                                                                           
+      <a href="https://ticmd.redirecionar.online/" class="button" onclick="trackClick()">ENTRAR AGORA</a>                                                                                 
+                                          
+      <div class="alert-box">
+          <h2>⚠ Entre e aguarde</h2>                                                                                                                                                       
+          <p>As entradas serão enviadas em instantes!</p>
+      </div>                                                                                                                                                                               
+                                                                                                                                                                                         
+      <div class="footer">                
+          Copyright © 2026 – Todos os direitos reservados
+      </div>                                                                                                                                                                               
+  
+  </div>                                                                                                                                                                                   
+                                                                                                                                                                                         
+  </body>
+  </html>
